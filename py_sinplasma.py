@@ -14,14 +14,14 @@ FPS = 60
 clock = pygame.time.Clock()
 
 phase_left = 0.0
-speed_left = 0.02  # Geschwindigkeit der linken Welle
-frequency_left = 0.01  # Grundfrequenz der linken Welle
-amplitude_left = height * 0.1  # Grundamplitude der linken Welle
+speed_left = 0.02  
+frequency_left = 0.01  
+amplitude_left = height * 0.1 
 
 phase_right = 0.0
-speed_right = 0.025  # Geschwindigkeit der rechten Welle
-frequency_right = 0.012  # Grundfrequenz der rechten Welle
-amplitude_right = height * 0.1  # Grundamplitude der rechten Welle
+speed_right = 0.025  
+frequency_right = 0.012  
+amplitude_right = height * 0.1  
 
 base_x_left = width * 0.25
 base_x_right = width * 0.75
@@ -58,17 +58,17 @@ while running:
     phase_left += speed_left
     phase_right += speed_right
 
-    frequency_left += max_freq_change * (math.sin(phase_left) * 0.5)  # Kleine Änderungen basierend auf der Phase
-    frequency_left = max(frequency_min, min(frequency_left, frequency_max))  # Begrenze die Frequenz
+    frequency_left += max_freq_change * (math.sin(phase_left) * 0.5)  
+    frequency_left = max(frequency_min, min(frequency_left, frequency_max))  
 
-    frequency_right += max_freq_change * (math.cos(phase_right) * 0.5)  # Kleine Änderungen basierend auf der Phase
-    frequency_right = max(frequency_min, min(frequency_right, frequency_max))  # Begrenze die Frequenz
+    frequency_right += max_freq_change * (math.cos(phase_right) * 0.5)  
+    frequency_right = max(frequency_min, min(frequency_right, frequency_max))  
 
-    amplitude_left += max_amp_change * (math.cos(phase_left) * 0.5)  # Kleine Änderungen basierend auf der Phase
-    amplitude_left = max(amplitude_min, min(amplitude_left, amplitude_max))  # Begrenze die Amplitude
+    amplitude_left += max_amp_change * (math.cos(phase_left) * 0.5)  
+    amplitude_left = max(amplitude_min, min(amplitude_left, amplitude_max))
 
-    amplitude_right += max_amp_change * (math.sin(phase_right) * 0.5)  # Kleine Änderungen basierend auf der Phase
-    amplitude_right = max(amplitude_min, min(amplitude_right, amplitude_max))  # Begrenze die Amplitude
+    amplitude_right += max_amp_change * (math.sin(phase_right) * 0.5)  
+    amplitude_right = max(amplitude_min, min(amplitude_right, amplitude_max)) 
 
     for y in range(num_samples):
         x_left = base_x_left + amplitude_left * math.sin(frequency_left * y + phase_left)
@@ -80,7 +80,7 @@ while running:
         min_distance = -2 * (amplitude_left + amplitude_right)
 
         hue = ((distance - min_distance) / (max_distance - min_distance)) * 360
-        hue = hue % 360  # Stelle sicher, dass Hue zwischen 0 und 360 bleibt
+        hue = hue % 360  
 
         saturation = 1.0
         brightness = 1.0
